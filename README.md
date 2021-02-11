@@ -37,6 +37,22 @@ You can also determine how many possible anagrams exist for a given string:
 12
 ```
 
+## Command Line Utility
+Installation includes an entry point called ``maagnar`` which can be use to
+generate an anagrams list.
+
+```
+$ maagnar lol
+INFO: Generating anagrams from lol
+INFO: Possible combinations: 3
+INFO: [1/3] Found: 'lol'
+INFO: [2/3] Found: 'oll'
+INFO: [3/3] Found: 'llo'
+$
+```
+
+![example](https://raw.githubusercontent.com/induane/maagnar/main/example.jpg)
+
 ## Installation
 I'm on pypi!
 
