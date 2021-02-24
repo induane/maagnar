@@ -32,7 +32,7 @@ def cli():
         "--log-level",
         default="INFO",
         choices=("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"),
-        help="Logging level for Montana Scripts.",
+        help="Logging level.",
     )
     parser.add_argument(
         "-L",
