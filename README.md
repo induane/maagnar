@@ -2,8 +2,7 @@
 <a href="https://pypi.python.org/pypi/maagnar"><img src="https://img.shields.io/pypi/v/maagnar.svg"></a>
 
 A simple library and tool for generating anagrams. It is generally low memory
-and relatively fast, particularly when compared with Python's builtin
-permutations library.
+and feels reasonably fast.
 
 The implementation here is mildly interesting. Rather than descend in a
 predictable way through all possible anagrams in sequence using an anagram, the
