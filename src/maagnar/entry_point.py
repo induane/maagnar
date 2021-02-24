@@ -3,10 +3,9 @@ import argparse
 import errno
 import logging
 import os
-import pkg_resources
-from pkg_resources import get_distribution
 import sys
 from logging.config import dictConfig
+from pkg_resources import get_distribution, DistributionNotFound
 
 # Third Party
 from log_color import ColorFormatter, ColorStripper
@@ -19,7 +18,7 @@ LOG = logging.getLogger(__name__)
 # Setup the version string globally
 try:
     pkg_version = f'%(prog)s {get_distribution("maagnar").version}'
-except pkg_resources.DistributionNotFound:
+except DistributionNotFound:
     pkg_version = "%(prog)s Development"
 except Exception:
     pkg_version = "%(prog)s Unknown"
