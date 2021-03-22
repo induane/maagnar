@@ -52,6 +52,29 @@ $
 
 ![example](https://raw.githubusercontent.com/induane/maagnar/main/example.jpg)
 
+The entry point remembers previously seen anagrams. This isn't that interesting
+when the number of possible anagrams is low, but for anagrams such as:
+
+```
+Just because some of us can read and write and do a little math, that doesn't mean we deserve to conquer the universe
+```
+
+The number possible permutations is extremely high. You might need to stop
+after a few decades and let your computer rest for a while before returning to
+the task in-progress.
+
+To start an anagram generator over, use the ``--clear-seen`` switch:
+
+```
+$ maagnar lol --clear-seen
+INFO: Generating anagrams from lol
+INFO: Possible combinations: 3
+INFO: [1/3] Found: 'lol'
+INFO: [2/3] Found: 'llo'
+INFO: [3/3] Found: 'oll'
+$
+```
+
 ## Installation
 I'm on pypi!
 
@@ -81,3 +104,19 @@ are listed below.
 
 ## http://no-color.org/
 Maagnar honors the ``NO_COLOR`` environment variable.
+
+
+# Changelog
+
+## 1.0.2
+- Instead of using a set to track seen anagrams, store all seen values in a
+  fanout cache on-disk; this reduces overall memory consumption though
+  increases disk usage. (Issue #1)
+- Added ``--clear-seen`` command line argument to start anagram generation over
+  from scratch.
+
+## 1.0.1
+Add long description for pypi publication
+
+## 1.0.0
+Feature complete

@@ -41,6 +41,13 @@ def cli():
         default=None,
         help="Location to place a log of the process output",
     )
+    parser.add_argument(
+        "--clear-seen",
+        action="store_true",
+        dest="clear_seen",
+        default=False,
+        help="Clear seen cache; start anagram generation over from scratch",
+    )
     parsed_args = parser.parse_args()
 
     # Get logging related arguments & the configure logging
@@ -104,7 +111,10 @@ def cli():
     total = lib.calculate_total_permutations(parsed_args.SEED[0])
     padding = len(str(total))  # Used for progress indicator
     LOG.info("Possible combinations: #c<%s>", total)
-    for idx, val in enumerate(lib.permutations(parsed_args.SEED[0]), start=1):
+    start_idx = len(lib.get_cache(parsed_args.SEED[0])) or 1
+    for idx, val in enumerate(
+        lib.permutations(parsed_args.SEED[0], clear_cache=parsed_args.clear_seen), start=start_idx
+    ):
         LOG.info("[#m<%s/%s>] Found: #g<'%s>'", str(idx).zfill(padding), total, val)
 
     LOG.debug("#g<\u2713> Process complete!")
